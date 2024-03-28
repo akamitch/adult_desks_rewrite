@@ -1,7 +1,7 @@
 const config = {
-apiKey: "a6b9fcdb-7bb1-4d8e-b726-97704839cd0c",
+apiKey: "109df2ad-111f-4ce3-ab4a-0423c9101972",
 baseURL: "https://adult.ai.total-tube.com/v1",
-prompt: "Make description of porno sciene, in hardcore style, length 20-30 words using this clues:",
+prompt: "Make description of porno sciene, in hardcore style, length 50-80 words using this clues:",
 inFile: "in.txt",
 showLog: true, // true or false
 }

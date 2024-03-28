@@ -3,9 +3,9 @@ const OpenAI = require('openai');
 const config = require('./config.js');
 
 // Function to generate a new description based on ALT_1, Description, and TAGS
-async function generateNewDescription(alt1, description, tags) {
+async function generateNewDescription(alt1, description) {
     const prompt = config.prompt;
-    const clues = `${alt1} ${description} ${tags}`;
+    const clues = `${alt1} ${description}`;
     const completion = await openai.chat.completions.create({
         messages: [{ role: "user", content: `${prompt} ${clues}` }],
       });
@@ -42,18 +42,12 @@ async function processCSV(csvFilePath) {
             description = row[descriptionIndex];
         }
         
-        let tags = '';
-        if (tagsIndex !== -1) { 
-            tags = row[tagsIndex];
-        }
-        
         //console.log(`alt: ${alt1} description: ${description} tags: ${tags}`);
-        const newDescription = await generateNewDescription(alt1, description, tags);
+        const newDescription = await generateNewDescription(alt1, description);
 
         if (config.showLog) {
             console.log(`row ${i} from total ${lines.length -1}`);
             console.log(`Alt1: ${alt1}`);
-            console.log(`Tags: ${tags}`);
             console.log(`Old description: ${description}`);
             console.log(`New description: ${newDescription}`);
         }
